@@ -29,6 +29,7 @@ public class ViewController {
 
         
         System.out.println("Este es el username "+loginForm.getUsername());
+        System.out.println("password "+loginForm.getPassword());
         redirectAttributes.addFlashAttribute("loginForm", loginForm);
        
         return "redirect:/principal";
