@@ -25,7 +25,7 @@ public class UsuarioController {
     @GetMapping("/login")
     public String mostrarLogin(Model model) {
         model.addAttribute("loginForm", new LoginForm());
-        return "login";
+        return "pages-login";
     }
 
     @PostMapping("/login")

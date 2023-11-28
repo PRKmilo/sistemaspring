@@ -16,29 +16,9 @@
 // public class ViewController {
 
 
-//     @GetMapping("/login")
+//     @GetMapping("/u")
 //     public String mostrarLogin(Model model){
-//         model.addAttribute("loginForm", new LoginForm());
-//         return "login";
+//         return "index";
 //     }
 
-//     @PostMapping("/login")
-//     public String autenticacion_logica(@ModelAttribute("loginForm") LoginForm loginForm,
-//                                        @RequestParam(name = "redirect", required = false) String redirect,
-//                                        RedirectAttributes redirectAttributes){
-
-        
-//         System.out.println("Este es el username "+loginForm.getUsername());
-//         System.out.println("password "+loginForm.getPassword());
-//         redirectAttributes.addFlashAttribute("loginForm", loginForm);
-       
-//         return "redirect:/principal";
-//     } 
-
-//     @GetMapping("/principal")
-//     public String mostrarPrincipal(Model model,@ModelAttribute("loginForm") LoginForm loginForm){
-//         System.out.println("este es el loginform de principal"+loginForm.getUsername());
-        
-//         return "principal";
-//     }
 // }
