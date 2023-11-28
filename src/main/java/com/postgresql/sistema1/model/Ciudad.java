@@ -11,7 +11,7 @@ import lombok.Data;
 public class Ciudad {
     @Id
     private Long ID_CIUDAD;
-    private  String COD_CIUDAD;
+    private String COD_CIUDAD;
     private String NOMBRE_CIUDAD;
     private String ID_DPTO_CIUDAD;
     private Character ESTADO_CIUDAD; 
