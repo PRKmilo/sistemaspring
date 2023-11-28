@@ -1,6 +1,8 @@
 package com.postgresql.sistema1.model;
 
-import java.util.Date;
+import java.math.BigInteger;
+
+import java.sql.Timestamp;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -9,13 +11,18 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "usuarios")
+@Table(name = "usuario")
 public class Usuario {
     @Id
-    private long id;
-    private String nombre;
-    private String contrasena;
-    private Date fecha_nacimiento;
-    private String documento_identidad;
-    private String tipo_documento;
+    private Long ID_USUARIO;
+    private String PRIMER_NOMBRE_USUARIO;
+    private String SEGUNDO_NOMBRE_USUARIO;
+    private String PRIMER_APELLIDO_USUARIO;
+    private String PRIMER_SEGUNDO_USUARIO;
+    private String DIRECCION_USUARIO;
+    private BigInteger TELEFONO_USUARIO;
+    private String EMAIL_USUARIO;
+    private String PASSWORD_USUARIO;
+    private Timestamp CREADO_USUARIO;
+
 }
