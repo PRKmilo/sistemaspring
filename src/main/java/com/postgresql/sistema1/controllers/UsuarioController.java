@@ -32,7 +32,7 @@ public class UsuarioController {
     public String autenticacion_logica(@ModelAttribute("loginForm") LoginForm loginForm,
             @RequestParam(name = "redirect", required = false) String redirect, RedirectAttributes redirectAttributes) {
 
-        List<Object[]> usuario = usuarioService.obtenerCiudades(loginForm.getUsername(), loginForm.getPassword());
+        List<Object[]> usuario = usuarioService.obtenerUsuario(loginForm.getUsername(), loginForm.getPassword());
 
         if (!CollectionUtils.isEmpty(usuario)) {
 

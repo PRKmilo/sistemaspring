@@ -15,12 +15,12 @@ public class UsuarioService {
         this.usuarioRepository = usuarioRepository;
     }
 
-    public List<Object[]> obtenerCiudades(String correoUsuario, String contrasenaUsuario){
-        return usuarioRepository.obtenerUsuario(correoUsuario,contrasenaUsuario);
+    public List<Object[]> obtenerUsuario(String nombreDeUsuario, String contrasenaUsuario){
+        return usuarioRepository.obtenerUsuario(nombreDeUsuario,contrasenaUsuario);
     }
 
-    public List<Object[]> obtenerRolesUsuario(String correoUsuario, String contrasenaUsuario){
-        return usuarioRepository.obtenerRolesUsuario(correoUsuario,contrasenaUsuario);
+    public List<Object[]> obtenerRolesUsuario(String nombreDeUsuario, String contrasenaUsuario){
+        return usuarioRepository.obtenerRolesUsuario(nombreDeUsuario,contrasenaUsuario);
     }
 
     
