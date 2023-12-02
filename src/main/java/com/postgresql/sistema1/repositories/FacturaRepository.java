@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.postgresql.sistema1.model.Factura;
 
-public interface FacturaRepository extends JpaRepository<Factura, Long>{
+public interface FacturaRepository extends JpaRepository<Factura, Short>{
     
 }

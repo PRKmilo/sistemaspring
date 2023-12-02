@@ -10,7 +10,7 @@ import lombok.Data;
 @Table(name = "cliente" )
 public class Cliente {
     @Id
-    private Long ID_CLIENTE;
+    private short ID_CLIENTE;
     private Long ID_EMPRESA;
     private String NIT_CLIENTE;
     private String RSOCIAL_CLIENTE;
