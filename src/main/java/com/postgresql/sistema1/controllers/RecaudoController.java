@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.postgresql.sistema1.clases.RecaudoForm;
 import com.postgresql.sistema1.services.RecaudoService;
+import com.postgresql.sistema1.model.Recaudo;
 
 //import dto.UsuarioDTO;
 
@@ -25,21 +26,23 @@ public class RecaudoController {
         this.recaudoService = recaudoService;
     }
 
-    @GetMapping("/ver_recaudo")
+    @GetMapping("/consultar_recaudo")
     public String mostrarRecaudo(Model model) {
-        
-        List<Object[]> clientesFactura = recaudoService.ClientesFactura();
-        model.addAttribute("clientesFactura", clientesFactura);
-        return "tables-data";
+
+        List<Object[]> recaudos = recaudoService.ObtenerRecaudos();
+
+        model.addAttribute("recaudos", recaudos);
+        return "consulta-recaudo";
     }
 
-    @GetMapping("/ingresar_recaudo")
-    public String mostrarFormularioRecaudo(Model model) {
-        
-        List<Object[]> clientesFactura = recaudoService.ClientesFactura();
-    
+    @PostMapping("/ingresar_datos_recaudo")
+    public String mostrarFormularioRecaudo(@RequestParam("idCliente") short idCliente,
+            @RequestParam("idFactura") short idFactura, @RequestParam("nombreCliente") String nombreCliente,
+            Model model) {
+        model.addAttribute("idCliente", idCliente);
+        model.addAttribute("idFactura", idFactura);
+        model.addAttribute("nombreCliente", nombreCliente);
         model.addAttribute("recaudoForm", new RecaudoForm());
-        model.addAttribute("clientesFactura", clientesFactura);
         return "forms-elements";
     }
 
@@ -47,13 +50,15 @@ public class RecaudoController {
     public String autenticacion_logica(@ModelAttribute("recaudoForm") RecaudoForm recaudoForm,
             @RequestParam(name = "redirect", required = false) String redirect, RedirectAttributes redirectAttributes) {
 
-        // List<Object[]> usuario =
-        // usuarioService.obtenerUsuario(loginForm.getUsername(),
-        // loginForm.getPassword());
-
-        // UsuarioDTO usuarioDTO = new UsuarioDTO((Long)
-        // usuarioArreglo[0],(String)usuarioArreglo[1],new Long[]{(Long)
-        // usuarioArreglo[2],(Long) usuarioArreglo[3]});
+        // Metodo de Cami
+        Recaudo recaudo = new Recaudo();
+        recaudo.setID_CLIENTE_RECAUDO((short) recaudoForm.getIdCliente());
+        recaudo.setID_FACTURA((short) recaudoForm.getIdFactura());
+        recaudo.setVALOR_RECAUDO(recaudoForm.getValorRecaudo());
+        //recaudoService.registrarRecaudo(recaudo, null, null);
+ 
+        // Registro en la base de datos 
+        recaudoService.agregarRecaudosConTransaccion((short) recaudoForm.getIdCliente(), (short) recaudoForm.getIdFactura(), recaudoForm.getValorRecaudo());
 
         redirectAttributes.addFlashAttribute("recaudoForm", recaudoForm);
         return "redirect:/prueba";
@@ -62,12 +67,8 @@ public class RecaudoController {
 
     @GetMapping("/prueba")
     public String prueba(Model model, @ModelAttribute("recaudoForm") RecaudoForm recaudoForm) {
-        // Info
-        // usuarioArreglo[0] = IDUsuario
-        // usuarioArreglo[1] = NombreUsuario
-        // usuarioArreglo[2....] = Roles
-        model.addAttribute("idCliente", recaudoForm.getIdCliente());
-        model.addAttribute("idFactura", recaudoForm.getIdFactura());
+        model.addAttribute("idCliente", (short) recaudoForm.getIdCliente());
+        model.addAttribute("idFactura", (short) recaudoForm.getIdFactura());
         model.addAttribute("valorRecaudo", recaudoForm.getValorRecaudo());
         return "principal";
     }

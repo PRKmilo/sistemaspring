@@ -24,5 +24,8 @@ public class FacturaService {
         return facturaRepository.save(factura);
     }
 
+    public List<Object[]> ObtenerFactura(){
+        return facturaRepository.obtenerFactura();
+    }
     
 }
