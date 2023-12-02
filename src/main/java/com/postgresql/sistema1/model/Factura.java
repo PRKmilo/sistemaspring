@@ -12,8 +12,8 @@ import lombok.Data;
 @Table(name = "factura")
 public class Factura {
     @Id
-    private Long ID_FACTURA;
-    private int ID_CLIENTE;
+    private short ID_FACTURA;
+    private short ID_CLIENTE;
     private Date FECHA_FACTURA;
     private int SUBTOTAL_FACTURA;
     private int VALOR_IVA;

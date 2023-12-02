@@ -15,8 +15,8 @@ import lombok.Data;
 public class Recaudo {
     @Id
     private Long ID_RECAUDO;
-    private Long ID_CLIENTE;
-    private Long ID_FACTURA;
+    private short ID_CLIENTE;
+    private short ID_FACTURA;
     private int VALOR_RECAUDO;
     private Date FECHA_RECAUDO;
 }

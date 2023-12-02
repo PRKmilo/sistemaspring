@@ -8,12 +8,16 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.util.CollectionUtils;
 import com.postgresql.sistema1.clases.LoginForm;
 import com.postgresql.sistema1.services.UsuarioService;
 
+import dto.UsuarioDTO;
+
 @Controller
+@SessionAttributes("usuarioDTO")
 public class UsuarioController {
 
     private UsuarioService usuarioService;
@@ -41,29 +45,41 @@ public class UsuarioController {
             if (!CollectionUtils.isEmpty(roles)) {
 
                 usuario.addAll(roles);
-                for (Object[] arrayObjetos : usuario) {
-                    for (Object objeto : arrayObjetos) {
-                        System.out.println(objeto + "  *");
+
+                int totalElementos = 0;
+                for (Object[] array : usuario) {
+                    totalElementos += array.length;
+                }
+
+                Object[] usuarioArreglo = new Object[totalElementos];
+                int contador = 0;
+                for (Object[] array : usuario) {
+                    for (Object objeto : array) {
+                        usuarioArreglo[contador++] = objeto;
                     }
                 }
-                redirectAttributes.addFlashAttribute("usuario", usuario);
+
+                UsuarioDTO usuarioDTO = new UsuarioDTO((Long) usuarioArreglo[0],(String)usuarioArreglo[1],new Long[]{(Long) usuarioArreglo[2],(Long) usuarioArreglo[3]});
+  
+                redirectAttributes.addFlashAttribute("usuarioDTO", usuarioDTO);
                 return "redirect:/principal";
 
             } else {
                 System.out.println("Su usuario no tiene ningún rol asignado");
             }
-
         }
 
         return "redirect:/login";
     }
 
     @GetMapping("/principal")
-    public String mostrarPrincipal(Model model, @ModelAttribute("usuario") List<Object[]> usuario) {
-
-        String correoUsuario = usuario.isEmpty() ? "" : (String) usuario.get(0)[1];
-        model.addAttribute("correoUsuario", correoUsuario);
-        return "principal";
-
+    public String mostrarPrincipal(Model model, @ModelAttribute("usuarioDTO") UsuarioDTO usuarioDTO) {
+        // Info
+        // usuarioArreglo[0] = IDUsuario
+        // usuarioArreglo[1] = NombreUsuario
+        // usuarioArreglo[2....] = Roles
+        model.addAttribute("nombreUsuario", usuarioDTO.getNombreUsuario());
+        model.addAttribute("usuarioDTO", usuarioDTO);
+        return "index";
     }
 }

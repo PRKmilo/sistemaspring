@@ -22,7 +22,7 @@ public class ClienteService {
         return clienteRepository.save(cliente);
     }
 
-   public Boolean existsClient(Long id_cliente){
+   public Boolean existsClient(short id_cliente){
       Boolean res = clienteRepository.findById(id_cliente).isPresent();
       return res;
    }
