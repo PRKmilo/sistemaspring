@@ -1,7 +1,5 @@
 package com.postgresql.sistema1.model;
 
-
-
 import java.util.Date;
 
 import jakarta.persistence.Entity;
@@ -15,7 +13,7 @@ import lombok.Data;
 public class Recaudo {
     @Id
     private Long ID_RECAUDO;
-    private short ID_CLIENTE;
+    private short ID_CLIENTE_RECAUDO;
     private short ID_FACTURA;
     private int VALOR_RECAUDO;
     private Date FECHA_RECAUDO;
