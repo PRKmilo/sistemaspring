@@ -16,8 +16,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
 import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RecaudoService {
