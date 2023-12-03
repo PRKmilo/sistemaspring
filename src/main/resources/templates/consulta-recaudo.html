@@ -43,11 +43,11 @@
 
 <body>
 
-   <!-- ======= Header ======= -->
-   <header id="header" class="header fixed-top d-flex align-items-center">
+    <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="/principal" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
@@ -92,7 +92,7 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link" th:with="UsuarioDTO=${usuarioDTO}" th:href="@{/principal}">
+        <a class="nav-link collapsed" th:with="UsuarioDTO=${usuarioDTO}" th:href="@{/principal}">
           <i class="bi bi-grid"></i>
           <span>Inicio</span>
         </a>
@@ -109,11 +109,328 @@
       <li class="nav-heading">Recaudo</li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="/consultar_recaudo">
+        <a class="nav-link" href="/consultar_recaudo">
           <i class="bi bi-layout-text-window-reverse"></i>
           <span>Consultar</span>
         </a>
       </li>
+      
+      <li class="nav-heading">Sección de módulos</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Facturación</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Crear factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Registrar factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Impuestos factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Añadir cliente</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar cliente</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar facturas</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar presupuestos</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar presupuesto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar presupuesto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Aceptar presupuesto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Solicitar presupuesto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Crear presupuesto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar cliente</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 7}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar presupuestos</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar presupuesto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar Impuestos</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#compras-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Compras</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="compras-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 4}">
+            <a>
+              <i class="bi bi-circle"></i><span>Solicitar compra</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Autorizar compra</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Denegar compra</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar compra</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar compra</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Ver histórico compras realizadas</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Añadir producto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar producto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar producto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Ver total compras solicitadas</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Registrar la entrada de una compra</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Añadir proveedor</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar proveedor</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar proveedor</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar proveedores</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 4}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar productos</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 4}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar compras en proceso</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#nomina-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Nómina</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="nomina-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Añadir trabajador</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar datos del trabajador</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar datos del trabajador</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar datos trabajador empresa</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 5 or usuarioDTO.idRol == 6 or usuarioDTO.idRol == 7}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar datos propios</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Ver histórico de nóminas</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar nóminas</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 5 or usuarioDTO.idRol == 6 or usuarioDTO.idRol == 7}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar propia nómina</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Crear nueva nómina</span>
+            </a>
+          </li>
+          
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar nómina</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar Nómina</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Ver histórico de nóminas propias</span>
+            </a>
+          </li>
+
+        </ul>
+      </li><!-- End Forms Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#almacen-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Almacén</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="almacen-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 5}">
+            <a>
+              <i class="bi bi-circle"></i><span>Incremento stock producto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 5}">
+            <a>
+              <i class="bi bi-circle"></i><span>Decremento stock producto</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 5 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 6}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar stock producto</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 5 or usuarioDTO.idRol == 7 or usuarioDTO.idRol == 6}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar ubicación producto</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 5 or usuarioDTO.idRol == 7 or usuarioDTO.idRol == 6}">
+            <a>
+              <i class="bi bi-circle"></i><span>Registrar incidencia de un producto</span>
+            </a>
+          </li>
+
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 5 or usuarioDTO.idRol == 6}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar incidencias</span>
+            </a>
+          </li>
+
+        </ul>
+      </li><!-- End Forms Nav -->
+
 
      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
