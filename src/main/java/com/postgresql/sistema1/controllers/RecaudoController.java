@@ -61,16 +61,8 @@ public class RecaudoController {
         recaudoService.agregarRecaudosConTransaccion((short) recaudoForm.getIdCliente(), (short) recaudoForm.getIdFactura(), recaudoForm.getValorRecaudo());
 
         redirectAttributes.addFlashAttribute("recaudoForm", recaudoForm);
-        return "redirect:/prueba";
+        return "redirect:/principal";
 
-    }
-
-    @GetMapping("/prueba")
-    public String prueba(Model model, @ModelAttribute("recaudoForm") RecaudoForm recaudoForm) {
-        model.addAttribute("idCliente", (short) recaudoForm.getIdCliente());
-        model.addAttribute("idFactura", (short) recaudoForm.getIdFactura());
-        model.addAttribute("valorRecaudo", recaudoForm.getValorRecaudo());
-        return "principal";
     }
 
 }
