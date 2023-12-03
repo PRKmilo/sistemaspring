@@ -43,85 +43,94 @@
 
 <body>
 
-   <!-- ======= Header ======= -->
-   <header id="header" class="header fixed-top d-flex align-items-center">
+ <!-- ======= Header ======= -->
+ <header id="header" class="header fixed-top d-flex align-items-center">
 
-    <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
-        <img src="assets/img/logo.png" alt="">
-        <span class="d-none d-lg-block">NiceAdmin</span>
-      </a>
-      <i class="bi bi-list toggle-sidebar-btn"></i>
-    </div><!-- End Logo -->
+  <div class="d-flex align-items-center justify-content-between">
+    <a href="index.html" class="logo d-flex align-items-center">
+      <img src="assets/img/logo.png" alt="">
+      <span class="d-none d-lg-block">NiceAdmin</span>
+    </a>
+    <i class="bi bi-list toggle-sidebar-btn"></i>
+  </div><!-- End Logo -->
 
 
-    <nav class="header-nav ms-auto">
-      <ul class="d-flex align-items-center">
+  <nav class="header-nav ms-auto">
+    <ul class="d-flex align-items-center">
 
-        <li class="nav-item d-block d-lg-none">
-          <a class="nav-link nav-icon search-bar-toggle " href="#">
-            <i class="bi bi-search"></i>
-          </a>
-        </li><!-- End Search Icon-->
-
-        <li class="nav-item dropdown pe-3">
-
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${nombreUsuario}"></span>
-          </a><!-- End Profile Iamge Icon -->
-        </li><!-- End Profile Nav -->
-
-      </ul>
-    </nav><!-- End Icons Navigation -->
-
-  </header><!-- End Header -->
-
-  <!-- ======= Sidebar ======= -->
-  <aside id="sidebar" class="sidebar">
-
-    <ul class="sidebar-nav" id="sidebar-nav">
-
-      <li class="nav-item">
-        <a class="nav-link" th:with="UsuarioDTO=${usuarioDTO}" th:href="@{/principal}">
-          <i class="bi bi-grid"></i>
-          <span>Inicio</span>
+      <li class="nav-item d-block d-lg-none">
+        <a class="nav-link nav-icon search-bar-toggle " href="#">
+          <i class="bi bi-search"></i>
         </a>
-      </li><!-- End Dashboard Nav -->
-      <li class="nav-heading">Factura</li>
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/consultar_factura">
-          <i class="bi bi-journal"></i>
-          <span>Consultar</span>
-        </a>
-      </li>
+      </li><!-- End Search Icon-->
 
-      <li class="nav-heading">Recaudo</li>
+      <li class="nav-item dropdown pe-3">
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="/consultar_recaudo">
-          <i class="bi bi-layout-text-window-reverse"></i>
-          <span>Consultar</span>
-        </a>
-      </li>
+        <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
+          <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${usuarioDTO.nombreUsuario}"></span>
 
-     <!-- <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="forms-elements.html">
-              <i class="bi bi-circle"></i><span>Form Elements</span>
-            </a>
-          </li>
-        </ul>
-      </li><!-- End Forms Nav -->
-      
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6 th:text="${usuarioDTO.nombreUsuario}"></h6>
+              <span th:text="${usuarioDTO.nombreRol}"></span>
+            </li>
+          </ul><!-- End Profile Dropdown Items -->
+
+
+        </a><!-- End Profile Iamge Icon -->
+      </li><!-- End Profile Nav -->
+
     </ul>
+  </nav><!-- End Icons Navigation -->
 
-  </aside><!-- End Sidebar-->
+</header><!-- End Header -->
+
+<!-- ======= Sidebar ======= -->
+<aside id="sidebar" class="sidebar">
+
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <li class="nav-item">
+      <a class="nav-link" th:with="UsuarioDTO=${usuarioDTO}" th:href="@{/principal}">
+        <i class="bi bi-grid"></i>
+        <span>Inicio</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
+    <li class="nav-heading">Factura</li>
+    
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="/consultar_factura">
+        <i class="bi bi-journal"></i>
+        <span>Consultar</span>
+      </a>
+    </li>
+
+    <li class="nav-heading">Recaudo</li>
+
+    <li class="nav-item">
+      <a class="nav-link collapsed" href="/consultar_recaudo">
+        <i class="bi bi-layout-text-window-reverse"></i>
+        <span>Consultar</span>
+      </a>
+    </li>
+
+   <!-- <li class="nav-item">
+      <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+        <i class="bi bi-journal-text"></i><span>Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+      </a>
+      <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <li>
+          <a href="forms-elements.html">
+            <i class="bi bi-circle"></i><span>Form Elements</span>
+          </a>
+        </li>
+      </ul>
+    </li><!-- End Forms Nav -->
+    
+  </ul>
+
+</aside><!-- End Sidebar-->
 
   <main id="main" class="main">
 

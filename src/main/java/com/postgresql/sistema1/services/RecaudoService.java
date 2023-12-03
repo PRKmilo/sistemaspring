@@ -50,10 +50,6 @@ public class RecaudoService {
         recaudoRepository.agregarRecaudos(id_cliente, id_factura, valor_recaudo);
     }
 
-    public List<Object[]> ClientesFactura() {
-        return recaudoRepository.clientesFactura();
-    }
-
     public List<Object[]> ObtenerRecaudos() {
         return recaudoRepository.obtenerRecaudos();
     }

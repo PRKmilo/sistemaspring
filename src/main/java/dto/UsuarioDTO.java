@@ -1,23 +1,14 @@
 package dto;
 
-
 public class UsuarioDTO {
-    private Long id;
     private String nombreUsuario;
-    private Long[] roles;
-
-    public UsuarioDTO(Long id, String nombreUsuario, Long[] roles){
-        this.id = id;
+    private Long idRol;
+    private String nombreRol;
+    
+    public UsuarioDTO(String nombreUsuario, Long idRol, String nombreRol) {
         this.nombreUsuario = nombreUsuario;
-        this.roles = roles;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+        this.idRol = idRol;
+        this.nombreRol = nombreRol;
     }
 
     public String getNombreUsuario() {
@@ -28,13 +19,20 @@ public class UsuarioDTO {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Long[] getRoles() {
-        return roles;
+    public Long getIdRol() {
+        return idRol;
     }
 
-    public void setRoles(Long[] roles) {
-        this.roles = roles;
+    public void setIdRol(Long idRol) {
+        this.idRol = idRol;
     }
 
+    public String getNombreRol() {
+        return nombreRol;
+    }
+
+    public void setNombreRol(String nombreRol) {
+        this.nombreRol = nombreRol;
+    }
 
 }

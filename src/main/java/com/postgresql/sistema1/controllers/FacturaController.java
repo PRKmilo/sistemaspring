@@ -5,8 +5,11 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.postgresql.sistema1.services.FacturaService;
+
+import dto.UsuarioDTO;
 
 //import dto.UsuarioDTO;
 
@@ -21,11 +24,12 @@ public class FacturaController {
     }
 
     @GetMapping("/consultar_factura")
-    public String mostrarFactura(Model model) {
+    public String mostrarFactura(Model model, @ModelAttribute("usuarioDTO") UsuarioDTO usuarioDTO) {
         
         List<Object[]> facturas = facturaService.ObtenerFactura();
            
         model.addAttribute("facturas", facturas);
+        model.addAttribute("usuarioDTO", usuarioDTO);
         return "consulta-factura";
     }
 

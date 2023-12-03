@@ -44,7 +44,7 @@
   <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="/principal" class="logo d-flex align-items-center">
         <img src="assets/img/logo.png" alt="">
         <span class="d-none d-lg-block">NiceAdmin</span>
       </a>
@@ -65,7 +65,16 @@
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
             <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${nombreUsuario}"></span>
+            <span class="d-none d-md-block dropdown-toggle ps-2" th:text="${usuarioDTO.nombreUsuario}"></span>
+
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+              <li class="dropdown-header">
+                <h6 th:text="${usuarioDTO.nombreUsuario}"></h6>
+                <span th:text="${usuarioDTO.nombreRol}"></span>
+              </li>
+            </ul><!-- End Profile Dropdown Items -->
+
+
           </a><!-- End Profile Iamge Icon -->
         </li><!-- End Profile Nav -->
 
@@ -102,6 +111,61 @@
           <span>Consultar</span>
         </a>
       </li>
+      
+      <li class="nav-heading">Sección de módulos</li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-journal-text"></i><span>Facturación</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Crear factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Eliminar factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Registrar factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Impuestos factura</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Añadir cliente</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 }">
+            <a>
+              <i class="bi bi-circle"></i><span>Modificar cliente</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar facturas</span>
+            </a>
+          </li>
+          <li th:if="${usuarioDTO.idRol == 1 or usuarioDTO.idRol == 3 or usuarioDTO.idRol == 4 or usuarioDTO.idRol == 2}">
+            <a>
+              <i class="bi bi-circle"></i><span>Consultar presupuestos</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End Forms Nav -->
 
      <!-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">

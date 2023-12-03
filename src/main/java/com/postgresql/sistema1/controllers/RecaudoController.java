@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.postgresql.sistema1.clases.RecaudoForm;
 import com.postgresql.sistema1.services.RecaudoService;
+
+import dto.UsuarioDTO;
+
 import com.postgresql.sistema1.model.Recaudo;
 
 //import dto.UsuarioDTO;
@@ -27,28 +30,30 @@ public class RecaudoController {
     }
 
     @GetMapping("/consultar_recaudo")
-    public String mostrarRecaudo(Model model) {
+    public String mostrarRecaudo(Model model, @ModelAttribute("usuarioDTO") UsuarioDTO usuarioDTO) {
 
         List<Object[]> recaudos = recaudoService.ObtenerRecaudos();
 
         model.addAttribute("recaudos", recaudos);
+        model.addAttribute("usuarioDTO", usuarioDTO);
         return "consulta-recaudo";
     }
 
     @PostMapping("/ingresar_datos_recaudo")
     public String mostrarFormularioRecaudo(@RequestParam("idCliente") short idCliente,
             @RequestParam("idFactura") short idFactura, @RequestParam("nombreCliente") String nombreCliente,
-            Model model) {
+            Model model, @ModelAttribute("usuarioDTO") UsuarioDTO usuarioDTO) {
         model.addAttribute("idCliente", idCliente);
         model.addAttribute("idFactura", idFactura);
         model.addAttribute("nombreCliente", nombreCliente);
         model.addAttribute("recaudoForm", new RecaudoForm());
+        model.addAttribute("usuarioDTO", usuarioDTO);
         return "forms-elements";
     }
 
     @PostMapping("/ingresar_recaudo")
     public String autenticacion_logica(@ModelAttribute("recaudoForm") RecaudoForm recaudoForm,
-            @RequestParam(name = "redirect", required = false) String redirect, RedirectAttributes redirectAttributes) {
+            @RequestParam(name = "redirect", required = false) String redirect, RedirectAttributes redirectAttributes, @ModelAttribute("usuarioDTO") UsuarioDTO usuarioDTO) {
 
         // Metodo de Cami
         Recaudo recaudo = new Recaudo();
@@ -61,6 +66,7 @@ public class RecaudoController {
         recaudoService.agregarRecaudosConTransaccion((short) recaudoForm.getIdCliente(), (short) recaudoForm.getIdFactura(), recaudoForm.getValorRecaudo());
 
         redirectAttributes.addFlashAttribute("recaudoForm", recaudoForm);
+        redirectAttributes.addFlashAttribute("usuarioDTO", usuarioDTO);
         return "redirect:/principal";
 
     }

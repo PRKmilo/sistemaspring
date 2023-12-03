@@ -10,12 +10,9 @@ import com.postgresql.sistema1.model.Usuario;
 import java.util.List;
 
 @RepositoryRestResource
-public interface  UsuarioRepository extends JpaRepository<Usuario, Long>{
+public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
 
-    @Query("SELECT u.ID_USUARIO,u.USERNAME_USUARIO  FROM Usuario u WHERE u.USERNAME_USUARIO = :nombreDeUsuario AND u.PASSWORD_USUARIO = :contrasenaUsuario") 
-    List<Object[]> obtenerUsuario(@Param("nombreDeUsuario") String nombreDeUsuario, @Param("contrasenaUsuario") String contrasenaUsuario);
-
-    @Query("SELECT r.ID_ROL FROM Usuario u, Usuario_rol ru, Rol r  WHERE u.USERNAME_USUARIO = :nombreDeUsuario and u.PASSWORD_USUARIO= :contrasenaUsuario and ru.ID_USUARIO=u.ID_USUARIO and ru.ID_ROL=r.ID_ROL") 
-    List<Object[]> obtenerRolesUsuario(@Param("nombreDeUsuario") String nombreDeUsuario, @Param("contrasenaUsuario") String contrasenaUsuario);
+    @Query("select u.USERNAME_USUARIO, r.ID_ROL, r.NOM_ROL from Usuario u,Usuario_rol ur, Rol r where u.USERNAME_USUARIO= :nombreDeUsuario and u.PASSWORD_USUARIO= :contrasenaUsuario and u.ID_USUARIO=ur.ID_USUARIO  and ur.ID_ROL=r.ID_ROL")
+    List<Object[]> findFirstByObtenerUsuario(@Param("nombreDeUsuario") String nombreDeUsuario,@Param("contrasenaUsuario") String contrasenaUsuario);
 
 }

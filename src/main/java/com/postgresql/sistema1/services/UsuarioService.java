@@ -16,12 +16,7 @@ public class UsuarioService {
     }
 
     public List<Object[]> obtenerUsuario(String nombreDeUsuario, String contrasenaUsuario){
-        return usuarioRepository.obtenerUsuario(nombreDeUsuario,contrasenaUsuario);
+        return usuarioRepository.findFirstByObtenerUsuario(nombreDeUsuario,contrasenaUsuario);
     }
-
-    public List<Object[]> obtenerRolesUsuario(String nombreDeUsuario, String contrasenaUsuario){
-        return usuarioRepository.obtenerRolesUsuario(nombreDeUsuario,contrasenaUsuario);
-    }
-
     
 }
